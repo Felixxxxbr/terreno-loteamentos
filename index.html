@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090909">
+  <meta name="description" content="Cadastre-se para receber novidades sobre o loteamento da FAAX Imóveis em Guarapuava.">
+  <title>Pré-cadastro de terrenos | FAAX Imóveis</title>
+  <style>
+    :root { --red:#ff202b; --red2:#d90012; --black:#080808; --panel:#111; --muted:#b8b8b8; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      margin:0; color:#fff; background:
+        radial-gradient(ellipse at 85% 15%, rgba(255,20,35,.17), transparent 35%),
+        radial-gradient(ellipse at 10% 80%, rgba(255,20,35,.10), transparent 30%), var(--black);
+      font-family:Arial, Helvetica, sans-serif; line-height:1.5;
+    }
+    body:before { content:""; position:fixed; inset:0; pointer-events:none; opacity:.12;
+      background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+      background-size:44px 44px; mask-image:linear-gradient(to bottom,black,transparent 90%); }
+    .wrap { width:min(1120px, 92%); margin:auto; position:relative; }
+    header { padding:24px 0; display:flex; align-items:center; justify-content:space-between; gap:18px; }
+    .brand { font-weight:900; font-size:clamp(25px,4vw,35px); letter-spacing:1px; line-height:1; }
+    .brand span { color:var(--red); }
+    .brand small { display:block; font-size:10px; letter-spacing:5px; margin-top:7px; color:#ccc; }
+    .tag { color:#fff; border:1px solid #632027; background:#160b0c; padding:8px 12px; border-radius:99px; font-size:12px; }
+    .hero { display:grid; grid-template-columns:1.1fr .9fr; gap:48px; align-items:center; padding:50px 0 74px; }
+    .eyebrow { display:inline-flex; align-items:center; gap:9px; color:#ff7279; font-size:12px; font-weight:bold; letter-spacing:2px; text-transform:uppercase; }
+    .eyebrow:before { content:""; width:26px; height:2px; background:var(--red); box-shadow:0 0 10px var(--red); }
+    h1 { font-size:clamp(42px,7vw,76px); line-height:.98; letter-spacing:-2.5px; margin:18px 0; text-transform:uppercase; }
+    h1 strong { color:var(--red); text-shadow:0 0 24px #ff202b45; display:block; }
+    .lead { color:#d2d2d2; max-width:560px; font-size:clamp(16px,2vw,19px); }
+    .highlight { display:flex; gap:12px; align-items:center; margin-top:26px; color:#eee; font-size:14px; }
+    .dot { width:10px; height:10px; border-radius:50%; background:var(--red); box-shadow:0 0 14px var(--red); flex:none; }
+    .form-card { background:linear-gradient(145deg,#171717,#0d0d0d); border:1px solid #3b2426; border-radius:20px; padding:clamp(22px,4vw,34px); box-shadow:0 0 0 1px #ff202b0b, 0 24px 80px #0009; position:relative; overflow:hidden; }
+    .form-card:before { content:""; height:3px; position:absolute; left:0; right:0; top:0; background:linear-gradient(90deg,transparent,var(--red),transparent); box-shadow:0 0 20px var(--red); }
+    .form-card h2 { margin:0 0 5px; font-size:26px; }
+    .form-card .sub { color:var(--muted); font-size:13px; margin:0 0 23px; }
+    label { display:block; color:#eee; font-weight:bold; font-size:13px; margin:15px 0 7px; }
+    input { width:100%; padding:14px 14px; border:1px solid #393939; border-radius:9px; color:#fff; background:#090909; font:inherit; outline:none; transition:.2s; }
+    input:focus { border-color:var(--red); box-shadow:0 0 0 3px #ff202b1c; }
+    input::placeholder { color:#777; }
+    .btn { width:100%; border:0; border-radius:9px; background:linear-gradient(100deg,#ff2632,#c90014); color:white; padding:15px 18px; font-weight:900; font-size:15px; letter-spacing:.4px; cursor:pointer; margin-top:21px; box-shadow:0 7px 24px #ff202b2b; transition:transform .15s,filter .15s; }
+    .btn:hover { filter:brightness(1.1); transform:translateY(-1px); }
+    .btn:disabled { opacity:.65; cursor:wait; transform:none; }
+    .privacy { color:#999; font-size:11px; margin:13px 0 0; }
+    .message { display:none; margin-top:15px; padding:12px; border-radius:8px; font-size:13px; }
+    .message.success { display:block; color:#c9ffd9; background:#102417; border:1px solid #245b36; }
+    .message.error { display:block; color:#ffd1d1; background:#2b1012; border:1px solid #70252b; }
+    .features { border-top:1px solid #262626; border-bottom:1px solid #262626; display:grid; grid-template-columns:repeat(3,1fr); gap:20px; padding:25px 0; }
+    .feature { display:flex; gap:12px; align-items:flex-start; }
+    .icon { width:38px; height:38px; border-radius:10px; display:grid; place-items:center; color:#ff5961; background:#2a0c0f; border:1px solid #552026; flex:none; font-size:19px; }
+    .feature b { display:block; font-size:14px; margin:0 0 4px; }
+    .feature span { color:#aaa; font-size:12px; }
+    .bottom { text-align:center; padding:42px 0 30px; }
+    .bottom h2 { font-size:clamp(24px,4vw,38px); margin:0 0 8px; }
+    .bottom p { color:#aaa; margin:0 auto; max-width:600px; }
+    footer { border-top:1px solid #252525; padding:20px 0 30px; display:flex; justify-content:space-between; gap:12px; color:#888; font-size:12px; }
+    footer a { color:#ff6068; text-decoration:none; }
+    .honeypot { position:absolute!important; left:-10000px!important; width:1px!important; height:1px!important; overflow:hidden!important; }
+    @media (max-width:780px) {
+      .hero { grid-template-columns:1fr; gap:30px; padding:32px 0 48px; }
+      .features { grid-template-columns:1fr; gap:17px; }
+      h1 { letter-spacing:-1.5px; }
+      .tag { display:none; }
+      footer { flex-direction:column; }
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap">
+    <div class="brand">FAAX<span>X</span><small>IMÓVEIS</small></div>
+    <div class="tag">GUARAPUAVA • PR</div>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <div>
+        <div class="eyebrow">Novidades chegando</div>
+        <h1>Seu terreno.<strong>Seu futuro.</strong></h1>
+        <p class="lead">A FAAX está preparando novidades para quem sonha em conquistar seu terreno em Guarapuava. Cadastre-se para receber informações sobre o próximo loteamento e as condições de pagamento quando forem divulgadas.</p>
+        <div class="highlight"><span class="dot"></span><span>Faça seu pré-cadastro e acompanhe as novidades.</span></div>
+      </div>
+
+      <section class="form-card" aria-labelledby="form-title">
+        <h2 id="form-title">Quero receber novidades</h2>
+        <p class="sub">Preencha seus dados. É rápido e gratuito.</p>
+        <form id="signup-form">
+          <label for="nome">Nome completo *</label>
+          <input id="nome" name="nome" autocomplete="name" placeholder="Digite seu nome completo" required minlength="3" maxlength="120">
+
+          <label for="whatsapp">WhatsApp com DDD *</label>
+          <input id="whatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="(42) 99999-9999" required maxlength="25">
+
+          <label for="email">E-mail</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="voce@exemplo.com" maxlength="160">
+
+          <div class="honeypot" aria-hidden="true">
+            <label for="website">Não preencha este campo</label>
+            <input id="website" name="website" tabindex="-1" autocomplete="off">
+          </div>
+
+          <label style="display:flex;gap:10px;align-items:flex-start;font-weight:normal;line-height:1.4">
+            <input id="consent" type="checkbox" required style="width:17px;height:17px;margin-top:2px;flex:none">
+            <span>Autorizo a FAAX Imóveis a utilizar meus dados para entrar em contato sobre este loteamento. *</span>
+          </label>
+
+          <button class="btn" id="submit-btn" type="submit">QUERO ME CADASTRAR →</button>
+          <p class="privacy">Seus dados serão usados para atender sua solicitação, conforme o aviso de privacidade da FAAX. Não informe dados de terceiros.</p>
+          <div id="message" class="message" role="status" aria-live="polite"></div>
+        </form>
+      </section>
+    </section>
+
+    <section class="wrap features" aria-label="Informações">
+      <div class="feature"><div class="icon">↗</div><div><b>Novidades em primeira mão</b><span>Receba informações quando houver novidades disponíveis.</span></div></div>
+      <div class="feature"><div class="icon">₊</div><div><b>Condições a divulgar</b><span>Detalhes de valores, entrada e parcelamento serão confirmados pela equipe.</span></div></div>
+      <div class="feature"><div class="icon">⌖</div><div><b>Em Guarapuava</b><span>Acompanhe as novidades com a equipe da FAAX Imóveis.</span></div></div>
+    </section>
+
+    <section class="wrap bottom">
+      <h2>Seu próximo passo pode começar aqui.</h2>
+      <p>Cadastre-se para acompanhar as novidades. O pré-cadastro não representa reserva, compra ou garantia de condições comerciais.</p>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <span>© <span id="year"></span> FAAX Imóveis. Todos os direitos reservados.</span>
+    <span>Guarapuava – PR · <a href="https://faax.com.br/" target="_blank" rel="noopener">faax.com.br</a> · (42) 3304-3301</span>
+  </footer>
+
+  <script>
+    // COLE A URL DO SEU APP DA WEB DO GOOGLE APPS SCRIPT ENTRE AS ASPAS ABAIXO.
+    const SCRIPT_URL = "COLE_AQUI_A_URL_DO_APPS_SCRIPT";
+
+    const form = document.getElementById("signup-form");
+    const button = document.getElementById("submit-btn");
+    const message = document.getElementById("message");
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const showMessage = (text, type) => {
+      message.textContent = text;
+      message.className = "message " + type;
+    };
+
+    document.getElementById("whatsapp").addEventListener("input", function () {
+      // Máscara simples para facilitar a digitação; a planilha recebe o valor digitado.
+      let digits = this.value.replace(/\D/g, "").slice(0, 11);
+      if (digits.length > 10) digits = digits.replace(/^(\d{2})(\d{5})(\d{4}).*/, "($1) $2-$3");
+      else if (digits.length > 6) digits = digits.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, "($1) $2-$3");
+      else if (digits.length > 2) digits = digits.replace(/^(\d{2})(\d{0,5})/, "($1) $2");
+      this.value = digits;
+    });
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      message.className = "message";
+      if (document.getElementById("website").value) return;
+      if (SCRIPT_URL.includes("COLE_AQUI")) {
+        showMessage("O site ainda precisa ser conectado à planilha. Configure a URL do Apps Script no arquivo index.html.", "error");
+        return;
+      }
+
+      const nome = document.getElementById("nome").value.trim();
+      const whatsapp = document.getElementById("whatsapp").value.trim();
+      const email = document.getElementById("email").value.trim();
+
+      if (nome.length < 3) return showMessage("Informe seu nome completo.", "error");
+      if (whatsapp.replace(/\D/g, "").length < 10) return showMessage("Confira o WhatsApp com DDD.", "error");
+      if (!document.getElementById("consent").checked) return showMessage("É necessário autorizar o contato para continuar.", "error");
+
+      button.disabled = true;
+      button.textContent = "ENVIANDO...";
+      const payload = { nome, whatsapp, email, origem: "Site de pré-cadastro FAAX" };
+
+      try {
+        // Apps Script pode não disponibilizar a resposta ao navegador por CORS.
+        // O modo no-cors envia os dados sem exigir leitura da resposta.
+        await fetch(SCRIPT_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(payload)
+        });
+        form.reset();
+        showMessage("Solicitação enviada! Obrigado pelo interesse. A equipe da FAAX poderá entrar em contato pelos dados informados.", "success");
+      } catch (error) {
+        showMessage("Não foi possível enviar agora. Confira sua conexão e tente novamente. Se o problema continuar, entre em contato com a FAAX.", "error");
+      } finally {
+        button.disabled = false;
+        button.textContent = "QUERO ME CADASTRAR →";
+      }
+    });
+  </script>
+</body>
+</html>
