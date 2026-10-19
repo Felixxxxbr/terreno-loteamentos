@@ -8,7 +8,7 @@
  * 4. Publique como Aplicativo da web (executar como você).
  */
 
-const SPREADSHEET_ID = "COLE_AQUI_O_ID_DA_PLANILHA";
+const SPREADSHEET_ID = "1Q9Lfv2Gd_toU8zeTOuCA9SmnTHpg4Qhb1LXcztuydWI";
 const SHEET_NAME = "Inscricoes";
 
 function doPost(e) {
